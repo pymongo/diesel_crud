@@ -55,7 +55,7 @@ fn create_user(conn: &SqliteConnection, new_user_form: UserInsert) -> Result<Use
         .values(&new_user_form)
         .execute(conn)?;
     let new_user_id: i64 = diesel::select(last_insert_rowid).first(conn)?;
-    let last_insert_user: User = users.filter(id.eq(new_user_id as i32)).first(conn)?;
+    let last_insert_user: User = users.find(new_user_id as i32).first(conn)?;
     Ok(last_insert_user)
 }
 
@@ -71,7 +71,7 @@ fn update_user_created_at(conn: &SqliteConnection, user_id: i32) -> Result<(), D
 }
 
 fn delete_user_by_user_id(conn: &SqliteConnection, user_id: i32) -> Result<(), DieselError> {
-    diesel::delete(users.filter(id.eq(user_id))).execute(conn)?;
+    diesel::delete(users.find(user_id)).execute(conn)?;
     Ok(())
 }
 
