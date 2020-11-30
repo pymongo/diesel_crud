@@ -1,0 +1,9 @@
+[package]
+name = "test_idea_rust_project_types"
+version = "0.1.0"
+authors = ["wuaoxiang <pylint@yandex.com>"]
+edition = "2018"
+
+[dependencies]
+diesel = { version = "1.4", features = ["sqlite", "chrono"] }
+chrono = "0.4"
