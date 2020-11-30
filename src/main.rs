@@ -1,12 +1,14 @@
 /*!
 schema of table users:
+
 ```sql
 CREATE TABLE users (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	email TEXT NOT NULL UNIQUE,
-	-- [SQLite Current Timestamp with Milliseconds?](https://stackoverflow.com/questions/17574784/sqlite-current-timestamp-with-milliseconds)
 	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+[SQLite Current Timestamp with Milliseconds?](https://stackoverflow.com/questions/17574784/sqlite-current-timestamp-with-milliseconds)
 ```
 */
 mod schema {
@@ -74,8 +76,8 @@ fn delete_user_by_user_id(conn: &SqliteConnection, user_id: i32) -> Result<(), D
 }
 
 /// diesel CRUD(Create, Read, Update, Delete) example with datetime
+/// optional: use r2d2 db_pool to enhance diesel performance
 fn main() -> Result<(), DieselError> {
-    // TODO use r2d2 db_pool to enhance diesel performance
     let conn = SqliteConnection::establish("file:db.sqlite").unwrap();
     // clear all data before test
     diesel::delete(users).execute(&conn)?;
