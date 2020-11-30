@@ -1,6 +1,6 @@
+.idea
 /target
 Cargo.lock
 diesel.toml
 db.sqlite
-.idea
-*.iml
+.env

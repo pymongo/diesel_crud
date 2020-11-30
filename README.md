@@ -3,6 +3,7 @@
 How to run:
 
 ```
-DATABASE_URL=file:db.sqlite diesel setup
+cp .env.example .env
+diesel setup
 cargo run
 ```

@@ -1,5 +1,5 @@
 [package]
-name = "test_idea_rust_project_types"
+name = "diesel_crud"
 version = "0.1.0"
 authors = ["wuaoxiang <pylint@yandex.com>"]
 edition = "2018"
